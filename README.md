@@ -20,16 +20,16 @@ you need to do write less code for the services.
 
 ## Installation
 
-The FirebaseWrapper Node.js is available on npm as `@zubair-nazir/firebasewrapper`:
+The FirebaseWrapper Node.js is available on npm as `@quokka-labs/firebasewrapper`:
 
 ```bash
-$ npm install --save @zubair-nazir/firebasewrapper
+$ npm install --save @quokka-labs/firebasewrapper
 ```
 
 To use the module in your application, `require` it from any JavaScript file:
 
 ```js
-const firebaseWrapper = require("@zubair-nazir/firebasewrapper")
+const firebaseWrapper = require("@quokka-labs/firebasewrapper")
 
 firebaseWrapper.initializeApp('firebase-config-filename.json');
 ```
