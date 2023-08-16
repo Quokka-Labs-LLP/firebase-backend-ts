@@ -1,15 +1,8 @@
+import { MulticastMessage, TokenMessage } from "firebase-admin/lib/messaging/messaging-api";
 import { firebaseAdmin } from "../index";
 
-const sendMessage = async (token: string, data: any) => {
+const sendMessage = async (message:TokenMessage) => {
   try {
-    // This registration token comes from the client FCM SDKs.
-    const registrationToken = token;
-
-    const message = {
-      data,
-      token: registrationToken,
-    };
-
     // Send a message to the device corresponding to the provided
     // registration token.
     return firebaseAdmin
@@ -28,15 +21,8 @@ const sendMessage = async (token: string, data: any) => {
   }
 };
 
-const sendMulticastMessage = async (tokens: string[], data: any) => {
+const sendMulticastMessage = async (message:MulticastMessage) => {
   try {
-    // This registration token comes from the client FCM SDKs.
-    const registrationToken = tokens;
-
-    const message = {
-      data,
-      tokens: registrationToken,
-    };
     // Send a message to the device corresponding to the provided
     // registration token array.
     return firebaseAdmin
@@ -48,7 +34,7 @@ const sendMulticastMessage = async (tokens: string[], data: any) => {
       })
       .catch((error) => {
         console.log("Error sending message:", error);
-        return error
+        return error;
       });
   } catch (e) {
     console.error(`Error sending message : ${e}`);
