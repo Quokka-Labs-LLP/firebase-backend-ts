@@ -5,16 +5,10 @@ const sendMessage = async (message:TokenMessage) => {
   try {
     // Send a message to the device corresponding to the provided
     // registration token.
-    return firebaseAdmin
+    const sendMessageResp = await firebaseAdmin
       .messaging()
       .send(message)
-      .then((response) => {
-        // Response is a message ID string.
-        return response;
-      })
-      .catch((error) => {
-        console.log("Error sending message:", error);
-      });
+      return sendMessageResp
   } catch (e) {
     console.error(`Error sending message : ${e}`);
     throw e;
@@ -25,17 +19,10 @@ const sendMulticastMessage = async (message:MulticastMessage) => {
   try {
     // Send a message to the device corresponding to the provided
     // registration token array.
-    return firebaseAdmin
+    const sendMulticastResp = await firebaseAdmin
       .messaging()
       .sendEachForMulticast(message)
-      .then((response) => {
-        // Response is a message ID string.
-        return response;
-      })
-      .catch((error) => {
-        console.log("Error sending message:", error);
-        return error;
-      });
+      return sendMulticastResp
   } catch (e) {
     console.error(`Error sending message : ${e}`);
     throw e;
